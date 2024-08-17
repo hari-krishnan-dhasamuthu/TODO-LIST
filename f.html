@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <script>
+        let tasks = [];
+
+        function addTask() {
+            let input = document.getElementById('taskInput').value;
+            if (input === '') {
+                alert('Field is Empty!');
+            } else {
+                tasks.push(input);
+                document.getElementById('taskInput').value = ''; 
+                displayTasks();
+            }
+        }
+
+        function removeTask() {
+            tasks.pop();
+            displayTasks();
+        }
+
+        function updateTask() {
+            let input = document.getElementById('updateInput').value;
+            if (input === '') {
+                alert('Field is Empty!');
+            } else {
+                tasks.push(input);
+                document.getElementById('updateInput').value = ''; 
+                displayTasks();
+            }
+        }
+
+        function displayTasks() {
+            document.getElementById('taskList').innerHTML = tasks.join('<br>');
+        }
+    </script>
+</head>
+<body style="background: repeating-linear-gradient(red, blue);">
+    <center>
+        <div style="color: black; border: 2px solid blueviolet; padding: 20px; width: 300px;">
+            <h3>To-Do List</h3>
+            <input type="text" id="taskInput" placeholder="Add a task">
+            <button onclick="addTask()">Add Task</button>
+            <br><br>
+            <input type="text" id="updateInput" placeholder="Update task">
+            <button onclick="updateTask()">Update Task</button>
+            <br><br>
+            <button onclick="removeTask()">Remove Last Task</button>
+            <br><br>
+            <h4>Tasks:</h4>
+            <div id="taskList"></div>
+        </div>
+    </center>
+</body>
+</html>
